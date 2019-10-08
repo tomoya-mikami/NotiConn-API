@@ -3,3 +3,7 @@
 .webpack
 .serverless
 node_modules
+
+serverless/secret/*
+
+!.gitkeep

@@ -21,6 +21,8 @@ custom:
     save:
       dev: ${file(./serverless/functions/save/dev.yml)}
       prd: ${file(./serverless/functions/save/prd.yml)}
+  secret:
+    slack: ${file(./serverless/secret/slack.yml)}
 
 provider:
   name: aws
@@ -32,6 +34,7 @@ provider:
     BUCKET: ${self:custom.env.${self:provider.stage}.BUCKET}
     EVENT_FILE: ${self:custom.env.${self:provider.stage}.EVENT_FILE}
     SINCE_ID_FILE: ${self:custom.env.${self:provider.stage}.SINCE_ID_FILE}
+    HOOKS_URL: ${self:custom.secret.slack.HOOKS_URL}
   iamRoleStatements:
     - Effect: Allow
       Action:
